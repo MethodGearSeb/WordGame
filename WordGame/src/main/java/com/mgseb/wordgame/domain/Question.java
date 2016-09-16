@@ -53,7 +53,7 @@ public class Question {
         for (int i = 0; i < visibleAnswer.length(); i++) {
             showLetter = random.nextBoolean();
             if (hiddenLetters > 0) {
-                if (showLetter) {
+                if (showLetter && hiddenLetters < visibleAnswer.length() - i) {
                     temp += visibleAnswer.charAt(i);
                     hiddenLetters--;
                 } else {
