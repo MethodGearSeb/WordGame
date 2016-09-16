@@ -1,5 +1,6 @@
 package com.mgseb.wordgame.domain;
 
+import com.mgseb.wordgame.game.Difficulty;
 import junit.framework.Assert;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
@@ -8,44 +9,98 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class QuestionTest {
-    
-    private Question question;
-    private final String hint;
-    private final String answer;
-    
+
+    private Question question1;
+    private Question question2;
+    private final String hint1;
+    private final String hint2;
+    private final String answer1;
+    private final String answer2;
+
     public QuestionTest() {
-        this.hint = "The favorite fruit of a monkey.";
-        this.answer = "Banana";
+        this.hint1 = "The favorite fruit of a monkey.";
+        this.hint2 = "Synonymous with \"tyrannical.\"";
+        this.answer1 = "Banana";
+        this.answer2 = "Despotic";
     }
-    
+
     @Before
     public void setUp() {
-        this.question = new Question(hint, answer);
+        this.question1 = new Question(hint1, answer1);
+        this.question2 = new Question(hint2, answer2);
     }
-    
+
     @Test
     public void getHint() {
-        assertEquals(hint,
-                question.getHint());
+        assertEquals(hint1,
+                question1.getHint());
     }
-    
+
     @Test
     public void getAnswer() {
-        assertEquals(answer, question.getAnswer());
+        assertEquals(answer1, question1.getAnswer());
     }
-    
+
     @Test
     public void isCorrect() {
-        assertTrue(question.isCorrect(answer));
+        assertTrue(question1.isCorrect(answer1));
     }
-    
+
     @Test
     public void isCorrectCanReturnFalse() {
-        assertFalse(question.isCorrect(hint));
+        assertFalse(question1.isCorrect(answer2));
+    }
+
+    @Test
+    public void isCorrectIsCaseInsensitive() {
+        assertTrue(question1.isCorrect(answer1.toUpperCase()));
+    }
+
+    @Test
+    public void getVisibleAnswer() {
+        assertEquals(answer1, question1.getVisibleAnswer());
+    }
+
+    @Test
+    public void hideVisibleAnswerEasy() {
+        question2.hideVisibleAnswer(Difficulty.EASY);
+        String visibleAnswer = question2.getVisibleAnswer();
+        int expected = visibleAnswer.length() / 2;
+        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
+    }
+
+    @Test
+    public void hideVisibleAnswerMedium() {
+        question2.hideVisibleAnswer(Difficulty.MEDIUM);
+        String visibleAnswer = question2.getVisibleAnswer();
+        int expected = visibleAnswer.length() / 4 * 3;
+        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
+    }
+
+    @Test
+    public void hideVisibleAnswerHard() {
+        question2.hideVisibleAnswer(Difficulty.HARD);
+        String visibleAnswer = question2.getVisibleAnswer();
+        int expected = visibleAnswer.length();
+        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
     }
     
     @Test
-    public void isCorrectIsCaseInsensitive() {
-        assertTrue(question.isCorrect(answer.toUpperCase()));
+    public void hideVisibleAnswerRepeatedUseHasNoEffect() {
+        question2.hideVisibleAnswer(Difficulty.EASY);
+        question2.hideVisibleAnswer(Difficulty.EASY);
+        String visibleAnswer = question2.getVisibleAnswer();
+        int expected = visibleAnswer.length() / 2;
+        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
+    }
+
+    private boolean correctNumberOfUnderscores(int expected, String visibleAnswer) {
+        int underscores = 0;
+        for (char c : visibleAnswer.toCharArray()) {
+            if (c == '_') {
+                underscores++;
+            }
+        }
+        return underscores == expected;
     }
 }

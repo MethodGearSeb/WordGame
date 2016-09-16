@@ -32,6 +32,7 @@ public class Question {
     }
 
     public void hideVisibleAnswer(Difficulty difficulty) {
+        visibleAnswer = answer;
         int hiddenLetters = 0;
         switch (difficulty) {
             case EASY:
