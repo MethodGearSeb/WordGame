@@ -1,10 +1,7 @@
 package com.mgseb.wordgame.domain;
 
 import com.mgseb.wordgame.game.Difficulty;
-import junit.framework.Assert;
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.Assert.assertFalse;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
