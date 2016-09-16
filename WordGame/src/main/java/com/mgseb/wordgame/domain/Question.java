@@ -34,7 +34,7 @@ public class Question {
                 hiddenLetters = answer.length() / 2;
                 break;
             case MEDIUM:
-                hiddenLetters = answer.length() / 4;
+                hiddenLetters = answer.length() / 4 * 3;
                 break;
             case HARD:
                 hiddenLetters = answer.length();
