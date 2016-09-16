@@ -1,3 +1,5 @@
+#Aiheen kuvaus ja rakenne
+
 **Aihe:** Peli, jossa pelaajan tulee tunnistaa englanninkielisiä sanoja. Ensin pelaaja valitsee vaikeusasteen. Peli alkaa esittämään kysymyksiä. Kysymys koostuu vihjeestä sekä kirjainkentistä. Kenttien määrästä näkee sanan pituuden. Kussakin kentässä on joko esillä vastaukseen kuuluva kirjain sen oikealla paikalla tai \_-merkki. Esim. jos vastaus on "BANAANI", pelaajalle voi näkyä kirjainkentissä "\_A\_\_\_N\_". Esillä olevien kirjainten määrä riippuu valitusta vaikeusasteesta.
 
 **Käyttäjät:** Pelaaja
@@ -7,6 +9,8 @@
 - Vaikeusasteen valitseminen
 - Pelin aloittaminen
 - Kysymyksiin vastaaminen
+
+##Luokkakaavio
 
 ![Luokkakaavio](http://yuml.me/a2d8f04c)
 [Muokkaa](http://yuml.me/edit/a2d8f04c)
