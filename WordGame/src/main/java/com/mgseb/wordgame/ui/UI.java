@@ -6,5 +6,5 @@ public interface UI {
     
     public void run();
     
-    public void askQuestion(Question question);
+    public String askQuestion(Question question);
 }

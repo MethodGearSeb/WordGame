@@ -10,7 +10,7 @@ public class ConsoleUI implements UI {
     }
 
     @Override
-    public void askQuestion(Question question) {
+    public String askQuestion(Question question) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

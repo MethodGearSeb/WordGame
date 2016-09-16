@@ -9,17 +9,24 @@ public class QuestionReader {
     private final String fileAddress;
     private final List<Question> questionList;
 
+    /**
+     * If file address given is null, use default file address.
+     * @param fileAddress 
+     */
     public QuestionReader(String fileAddress) {
         if (!(fileAddress == null)) {
             this.fileAddress = fileAddress;
         } else {
-            // replaces null argument with default file address
             this.fileAddress = "";
         }
         this.questionList = new ArrayList<>();
     }
 
-    // picks, deletes, and returns a random question from list
+    /**
+     * Method picks a random question from the list,
+     * deletes it, and returns it.
+     * @return 
+     */
     public Question next() {
         return null;
     }
