@@ -52,7 +52,8 @@ public class Question {
         boolean showLetter;
         for (int i = 0; i < visibleAnswer.length(); i++) {
             showLetter = random.nextBoolean();
-            if (showLetter || hiddenLetters == 0) {
+            if ((showLetter || hiddenLetters == 0)
+                    && hiddenLetters < visibleAnswer.length() - i) {
                 temp += visibleAnswer.charAt(i);
             } else {
                 temp += '_';
