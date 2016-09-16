@@ -14,7 +14,7 @@ public class QuestionReader {
      * @param fileAddress 
      */
     public QuestionReader(String fileAddress) {
-        if (!(fileAddress == null)) {
+        if (fileAddress != null || !fileAddress.isEmpty()) {
             this.fileAddress = fileAddress;
         } else {
             this.fileAddress = "";
