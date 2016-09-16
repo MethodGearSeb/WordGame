@@ -52,13 +52,11 @@ public class Question {
         boolean showLetter;
         for (int i = 0; i < visibleAnswer.length(); i++) {
             showLetter = random.nextBoolean();
-            if (hiddenLetters > 0) {
-                if (showLetter && hiddenLetters < visibleAnswer.length() - i) {
-                    temp += visibleAnswer.charAt(i);
-                    hiddenLetters--;
-                } else {
-                    temp += '_';
-                }
+            if (showLetter || hiddenLetters == 0) {
+                temp += visibleAnswer.charAt(i);
+            } else {
+                temp += '_';
+                hiddenLetters--;
             }
         }
         visibleAnswer = temp;
