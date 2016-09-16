@@ -2,12 +2,11 @@ package com.mgseb.wordgame.game;
 
 import com.mgseb.wordgame.domain.Question;
 import java.util.ArrayList;
-import java.util.List;
 
 public class QuestionReader {
 
     private final String fileAddress;
-    private final List<Question> questionList;
+    private final ArrayList<Question> questionList;
 
     /**
      * If file address given is null, use default file address.
@@ -17,7 +16,7 @@ public class QuestionReader {
         if (fileAddress != null || !fileAddress.isEmpty()) {
             this.fileAddress = fileAddress;
         } else {
-            this.fileAddress = "";
+            this.fileAddress = ""; // TODO: Add default fileAddress
         }
         this.questionList = new ArrayList<>();
     }
