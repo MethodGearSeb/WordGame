@@ -7,3 +7,6 @@
 - Vaikeusasteen valitseminen
 - Pelin aloittaminen
 - Kysymyksiin vastaaminen
+
+![Luokkakaavio](http://yuml.me/a2d8f04c)
+[Muokkaa](http://yuml.me/edit/a2d8f04c)
