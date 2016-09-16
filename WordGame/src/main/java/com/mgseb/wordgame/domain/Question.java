@@ -1,7 +1,7 @@
 package com.mgseb.wordgame.domain;
 
 public class Question {
-    
+
     private final String hint;
     private final String answer;
 
@@ -17,8 +17,8 @@ public class Question {
     public String getHint() {
         return hint;
     }
-    
+
     public boolean isCorrect(String guess) {
-        return guess == answer;
+        return guess.toLowerCase() == answer.toLowerCase();
     }
 }

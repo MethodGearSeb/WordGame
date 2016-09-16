@@ -8,8 +8,8 @@ import com.mgseb.wordgame.ui.UI;
 public class Main {
 
     public static void main(String[] args) {
-        QuestionReader reader = new QuestionReader("");
+        QuestionReader reader = new QuestionReader(null);
         UI ui = new ConsoleUI();
-        App app = new App(ui);
+        App app = new App(reader, ui);
     }
 }
