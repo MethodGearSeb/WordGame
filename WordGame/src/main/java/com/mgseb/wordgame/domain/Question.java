@@ -23,6 +23,10 @@ public class Question {
         return hint;
     }
 
+    public String getVisibleAnswer() {
+        return visibleAnswer;
+    }
+
     public boolean isCorrect(String guess) {
         return guess.toLowerCase().equals(answer.toLowerCase());
     }
