@@ -35,12 +35,10 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <!--<param>superohjelma.logiikka.*</param>-->
-                        <!--<param>superohjelma.tekoaly.*</param>-->
+                        <param>com.mgseb.wordgame.domain.*</param>
                     </targetClasses>
                     <targetTests>
-<!--                        <param>superohjelma.logiikka.*</param>
-                        <param>superohjelma.tekoaly.*</param>-->
+                        <param>com.mgseb.wordgame.domain.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
