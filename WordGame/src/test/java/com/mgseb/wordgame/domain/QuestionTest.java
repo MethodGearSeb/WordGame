@@ -60,32 +60,32 @@ public class QuestionTest {
 
     @Test
     public void hideVisibleAnswerEasy() {
-        question2.hideVisibleAnswer(Difficulty.EASY);
+        question2.hideLetters(Difficulty.EASY);
         String visibleAnswer = question2.getVisibleAnswer();
         int expected = visibleAnswer.length() / 2;
         assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
     }
 
     @Test
-    public void hideVisibleAnswerMedium() {
-        question2.hideVisibleAnswer(Difficulty.MEDIUM);
+    public void hideLettersMedium() {
+        question2.hideLetters(Difficulty.MEDIUM);
         String visibleAnswer = question2.getVisibleAnswer();
         int expected = visibleAnswer.length() / 4 * 3;
         assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
     }
 
     @Test
-    public void hideVisibleAnswerHard() {
-        question2.hideVisibleAnswer(Difficulty.HARD);
+    public void hideLettersHard() {
+        question2.hideLetters(Difficulty.HARD);
         String visibleAnswer = question2.getVisibleAnswer();
         int expected = visibleAnswer.length();
         assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
     }
     
     @Test
-    public void hideVisibleAnswerRepeatedUseHasNoEffect() {
-        question2.hideVisibleAnswer(Difficulty.EASY);
-        question2.hideVisibleAnswer(Difficulty.EASY);
+    public void hideLettersRepeatedUseHasNoEffect() {
+        question2.hideLetters(Difficulty.EASY);
+        question2.hideLetters(Difficulty.EASY);
         String visibleAnswer = question2.getVisibleAnswer();
         int expected = visibleAnswer.length() / 2;
         assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));

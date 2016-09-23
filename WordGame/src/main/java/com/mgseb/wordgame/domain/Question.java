@@ -31,22 +31,9 @@ public class Question {
         return guess.toLowerCase().equals(answer.toLowerCase());
     }
 
-    public void hideVisibleAnswer(Difficulty difficulty) {
+    public void hideLetters(Difficulty difficulty) {
         visibleAnswer = answer;
-        int hiddenLetters = 0;
-        switch (difficulty) {
-            case EASY:
-                hiddenLetters = answer.length() / 2;
-                break;
-            case MEDIUM:
-                hiddenLetters = answer.length() / 4 * 3;
-                break;
-            case HARD:
-                hiddenLetters = answer.length();
-                break;
-            default:
-                break;
-        }
+        int hiddenLetters = numberOfHiddenLetters(difficulty);
         Random random = new Random();
         String temp = "";
         boolean showLetter;
@@ -61,5 +48,23 @@ public class Question {
             }
         }
         visibleAnswer = temp;
+    }
+    
+    private int numberOfHiddenLetters(Difficulty difficulty) {
+        int hiddenLetters = 0;
+        switch (difficulty) {
+            case EASY:
+                hiddenLetters = answer.length() / 2;
+                break;
+            case MEDIUM:
+                hiddenLetters = answer.length() / 4 * 3;
+                break;
+            case HARD:
+                hiddenLetters = answer.length();
+                break;
+            default:
+                break;
+        }
+        return hiddenLetters;
     }
 }
