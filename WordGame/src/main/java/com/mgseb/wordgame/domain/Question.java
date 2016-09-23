@@ -5,12 +5,12 @@ import java.util.Random;
 
 public class Question {
 
-    private final String hint;
+    private final String question;
     private final String answer;
     private String visibleAnswer;
 
-    public Question(String hint, String answer) {
-        this.hint = hint;
+    public Question(String question, String answer) {
+        this.question = question;
         this.answer = answer;
         this.visibleAnswer = answer;
     }
@@ -19,8 +19,8 @@ public class Question {
         return answer;
     }
 
-    public String getHint() {
-        return hint;
+    public String getQuestion() {
+        return question;
     }
 
     public String getVisibleAnswer() {

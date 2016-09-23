@@ -21,9 +21,16 @@ public class QuestionSeries {
      * @return
      */
     public Question next() {
+        if (questionList.isEmpty()) {
+            return null;
+        }
         int i = (int) Math.floor(Math.random() * questionList.size());
         Question question = questionList.get(i);
         questionList.remove(question);
         return question;
+    }
+    
+    public boolean hasNext() {
+        return questionList.size() > 0;
     }
 }

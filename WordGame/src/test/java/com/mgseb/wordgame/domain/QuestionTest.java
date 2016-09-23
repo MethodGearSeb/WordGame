@@ -30,7 +30,7 @@ public class QuestionTest {
     @Test
     public void getHint() {
         assertEquals(hint1,
-                question1.getHint());
+                question1.getQuestion());
     }
 
     @Test

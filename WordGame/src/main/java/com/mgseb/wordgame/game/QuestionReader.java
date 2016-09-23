@@ -20,48 +20,47 @@ public class QuestionReader {
 
     public void readQuestions(QuestionSeries series) {
         Scanner scanner = openScanner();
-        
+
         if (scanner == null) {
             return;
         }
-        
+
         while (scanner.hasNext()) {
             String line = scanner.nextLine();
             String hint = "";
             String answer = "";
-            
+
             if (line.contains("@")) {
                 hint = "";
-                
+                line = scanner.nextLine();
+
                 while (!line.contains("#")) {
-                    line = scanner.nextLine();
                     hint += line;
+                    line = scanner.nextLine();
                 }
             }
-            
+
             if (line.contains("#")) {
                 line = scanner.nextLine();
                 answer = line;
             }
-            
+
             Question question = new Question(hint, answer);
             series.addQuestion(question);
         }
     }
 
     private String replaceIfInvalid(String fileAddress) {
-        if (fileAddress != null) {
-            if (!fileAddress.isEmpty()) {
-                return fileAddress;
-            }
+        if (fileAddress != null && !fileAddress.isEmpty()) {
+            return fileAddress;
         }
-        return "recourses/wordgame/english.txt";
+        return "wordgame/english.txt";
     }
 
     private Scanner openScanner() {
-        File file = new File(fileAddress);
+        ClassLoader loader = getClass().getClassLoader();
+        File file = new File(loader.getResource(fileAddress).getFile());
         Scanner scanner = null;
-        System.out.println("text1");
         try {
             scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
