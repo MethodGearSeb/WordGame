@@ -34,11 +34,6 @@ public class QuestionTest {
     }
 
     @Test
-    public void getAnswer() {
-        assertEquals(answer1, question1.getAnswer());
-    }
-
-    @Test
     public void isCorrect() {
         assertTrue(question1.isCorrect(answer1));
     }
@@ -54,14 +49,8 @@ public class QuestionTest {
     }
 
     @Test
-    public void getVisibleAnswer() {
-        assertEquals(answer1, question1.getVisibleAnswer());
-    }
-
-    @Test
     public void hideVisibleAnswerEasy() {
-        question2.hideLetters(Difficulty.EASY);
-        String visibleAnswer = question2.getVisibleAnswer();
+        String visibleAnswer = question2.getPartialAnswer(Difficulty.EASY);
         int expected = visibleAnswer.length() / 2;
         assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
     }
@@ -69,7 +58,7 @@ public class QuestionTest {
     @Test
     public void hideLettersMedium() {
         question2.hideLetters(Difficulty.MEDIUM);
-        String visibleAnswer = question2.getVisibleAnswer();
+        String visibleAnswer = question2.getPartialAnswer(Difficulty.MEDIUM);
         int expected = visibleAnswer.length() / 4 * 3;
         assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
     }
@@ -77,16 +66,15 @@ public class QuestionTest {
     @Test
     public void hideLettersHard() {
         question2.hideLetters(Difficulty.HARD);
-        String visibleAnswer = question2.getVisibleAnswer();
+        String visibleAnswer = question2.getPartialAnswer(Difficulty.HARD);
         int expected = visibleAnswer.length();
         assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
     }
     
     @Test
     public void hideLettersRepeatedUseHasNoEffect() {
-        question2.hideLetters(Difficulty.EASY);
-        question2.hideLetters(Difficulty.EASY);
-        String visibleAnswer = question2.getVisibleAnswer();
+        question2.getPartialAnswer(Difficulty.EASY);
+        String visibleAnswer = question2.getPartialAnswer(Difficulty.EASY);
         int expected = visibleAnswer.length() / 2;
         assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
     }

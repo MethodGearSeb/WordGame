@@ -7,24 +7,21 @@ public class Question {
 
     private final String question;
     private final String answer;
-    private String visibleAnswer;
+    private String partialAnswer;
 
     public Question(String question, String answer) {
         this.question = question;
         this.answer = answer;
-        this.visibleAnswer = answer;
-    }
-
-    public String getAnswer() {
-        return answer;
+        this.partialAnswer = answer;
     }
 
     public String getQuestion() {
         return question;
     }
 
-    public String getVisibleAnswer() {
-        return visibleAnswer;
+    public String getPartialAnswer(Difficulty difficulty) {
+        hideLetters(difficulty);
+        return partialAnswer;
     }
 
     public boolean isCorrect(String guess) {
@@ -32,26 +29,30 @@ public class Question {
     }
 
     public void hideLetters(Difficulty difficulty) {
-        visibleAnswer = answer;
+        partialAnswer = answer;
         int hiddenLetters = numberOfHiddenLetters(difficulty);
         Random random = new Random();
         String temp = "";
         boolean showLetter;
-        for (int i = 0; i < visibleAnswer.length(); i++) {
+
+        for (int i = 0; i < partialAnswer.length(); i++) {
             showLetter = random.nextBoolean();
+
             if ((showLetter || hiddenLetters == 0)
-                    && hiddenLetters < visibleAnswer.length() - i) {
-                temp += visibleAnswer.charAt(i);
+                    && hiddenLetters < partialAnswer.length() - i) {
+                temp += partialAnswer.charAt(i);
             } else {
                 temp += '_';
                 hiddenLetters--;
             }
         }
-        visibleAnswer = temp;
+
+        partialAnswer = temp;
     }
-    
+
     private int numberOfHiddenLetters(Difficulty difficulty) {
         int hiddenLetters = 0;
+
         switch (difficulty) {
             case EASY:
                 hiddenLetters = answer.length() / 2;
@@ -65,6 +66,7 @@ public class Question {
             default:
                 break;
         }
+
         return hiddenLetters;
     }
 }
