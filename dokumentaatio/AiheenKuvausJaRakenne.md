@@ -12,5 +12,5 @@
 
 ##Luokkakaavio
 
-![Luokkakaavio](http://yuml.me/a2d8f04c)
-[Muokkaa](http://yuml.me/edit/a2d8f04c)
+![Luokkakaavio](http://yuml.me/49c58cb0)
+[Muokkaa](http://yuml.me/edit/49c58cb0)
