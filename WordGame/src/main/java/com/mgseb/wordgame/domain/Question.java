@@ -42,8 +42,7 @@ public class Question {
                     && hiddenLetters < partialAnswer.length() - i) {
                 temp += partialAnswer.charAt(i);
             } else {
-                temp += (char) 1463;
-                temp += " ";
+                temp += "_";
                 hiddenLetters--;
             }
         }

@@ -27,6 +27,8 @@ public class ConsoleUI implements UI {
         System.out.print("Enter number to choose difficulty: ");
 
         int input = Integer.parseInt(scanner.nextLine());
+        
+        System.out.println();
 
         switch (input) {
             case 1:
