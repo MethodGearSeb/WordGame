@@ -5,9 +5,11 @@ import com.mgseb.wordgame.game.Difficulty;
 
 public interface UI {
     
-    public String askQuestion(Question question, Difficulty difficulty);
-    
     public Difficulty selectDifficulty();
     
-    public void displayMessage(String message);
+    public String askQuestion(Question question, Difficulty difficulty);
+    
+    public void consequence(boolean correctAnswer);
+    
+    public void run();
 }

@@ -42,7 +42,8 @@ public class Question {
                     && hiddenLetters < partialAnswer.length() - i) {
                 temp += partialAnswer.charAt(i);
             } else {
-                temp += '_';
+                temp += (char) 1463;
+                temp += " ";
                 hiddenLetters--;
             }
         }
@@ -54,6 +55,9 @@ public class Question {
         int hiddenLetters = 0;
 
         switch (difficulty) {
+            case BABY:
+                hiddenLetters = answer.length() / 4;
+                break;
             case EASY:
                 hiddenLetters = answer.length() / 2;
                 break;
@@ -62,8 +66,6 @@ public class Question {
                 break;
             case HARD:
                 hiddenLetters = answer.length();
-                break;
-            default:
                 break;
         }
 
