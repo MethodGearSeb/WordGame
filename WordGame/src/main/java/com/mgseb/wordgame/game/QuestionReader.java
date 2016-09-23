@@ -1,32 +1,24 @@
 package com.mgseb.wordgame.game;
 
-import com.mgseb.wordgame.domain.Question;
-import java.util.ArrayList;
-
 public class QuestionReader {
 
     private final String fileAddress;
-    private final ArrayList<Question> questionList;
 
     /**
      * If file address given is null, use default file address.
-     * @param fileAddress 
+     *
+     * @param fileAddress
      */
     public QuestionReader(String fileAddress) {
-        if (fileAddress != null || !fileAddress.isEmpty()) {
-            this.fileAddress = fileAddress;
-        } else {
-            this.fileAddress = ""; // TODO: Add default fileAddress
-        }
-        this.questionList = new ArrayList<>();
+        this.fileAddress = replaceIfInvalid(fileAddress);
     }
 
-    /**
-     * Method picks a random question from the list,
-     * deletes it, and returns it.
-     * @return 
-     */
-    public Question next() {
-        return null;
+    private String replaceIfInvalid(String fileAddress) {
+        if (fileAddress != null) {
+            if (!fileAddress.isEmpty()) {
+                return fileAddress;
+            }
+        }
+        return ""; // TODO: Add default fileAddress
     }
 }
