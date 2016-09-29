@@ -12,7 +12,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
 
-public class SwingUI extends JFrame implements UI, ActionListener, KeyListener {
+public class SwingUI extends JFrame implements UI, ActionListener, 
+        KeyListener {
 
     private QuestionSeries series;
     private Difficulty difficulty;
@@ -42,13 +43,13 @@ public class SwingUI extends JFrame implements UI, ActionListener, KeyListener {
         combox.setSelectedIndex(2);
         button.setActionCommand("start");
         button.addActionListener(this);
-        button.addKeyListener(this);
         p.setLayout(layout);
         p.add(label);
         p.add(new JPanel());
         p.add(combox);
         p.add(button);
         pack();
+        p.addKeyListener(this);
     }
 
     private void gameView() {
@@ -93,6 +94,7 @@ public class SwingUI extends JFrame implements UI, ActionListener, KeyListener {
         p.add(buttonPanel);
         pack();
         p.getComponent(4).requestFocus();
+        p.addKeyListener(this);
     }
 
     private void setSeries() {
