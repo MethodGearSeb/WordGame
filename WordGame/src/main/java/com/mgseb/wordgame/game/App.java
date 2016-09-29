@@ -1,6 +1,8 @@
 package com.mgseb.wordgame.game;
 
 import com.mgseb.wordgame.domain.Question;
+import com.mgseb.wordgame.ui.ConsoleUI;
+import com.mgseb.wordgame.ui.SwingUI;
 import com.mgseb.wordgame.ui.UI;
 
 public class App {
@@ -15,16 +17,33 @@ public class App {
     }
 
     public void run() {
+        Class uiClass = ui.getClass();
+
+        if (uiClass == ConsoleUI.class) {
+            runConsole();
+        }
+
+        if (uiClass == SwingUI.class) {
+            runSwing();
+        }
+    }
+
+    private void runConsole() {
         ui.run();
-        
-        Difficulty difficulty = ui.selectDifficulty();
+
+        ConsoleUI cui = (ConsoleUI) ui;
+        Difficulty difficulty = cui.selectDifficulty();
 
         while (series.hasNext()) {
             Question question = series.next();
-            String guess = ui.askQuestion(question, difficulty);
-            
-            ui.consequence(question.isCorrect(guess));
+            String guess = cui.askQuestion(question, difficulty);
+
+            cui.consequence(question.isCorrect(guess));
         }
+    }
+
+    private void runSwing() {
+        ui.run();
     }
 
     private void setSeries() {

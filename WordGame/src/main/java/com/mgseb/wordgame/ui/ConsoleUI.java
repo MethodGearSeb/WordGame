@@ -12,7 +12,6 @@ public class ConsoleUI implements UI {
         this.scanner = new Scanner(System.in);
     }
 
-    @Override
     public String askQuestion(Question question, Difficulty difficulty) {
         System.out.println(question.getQuestion());
         System.out.println(question.getPartialAnswer(difficulty));
@@ -21,12 +20,16 @@ public class ConsoleUI implements UI {
         return scanner.nextLine();
     }
 
-    @Override
     public Difficulty selectDifficulty() {
         System.out.println("1: very easy  2: easy  3: medium  4: hard\n");
         System.out.print("Enter number to choose difficulty: ");
 
-        int input = Integer.parseInt(scanner.nextLine());
+        int input = 5;
+        
+        try {
+            input = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+        }
         
         System.out.println();
 
@@ -40,8 +43,16 @@ public class ConsoleUI implements UI {
             case 4:
                 return Difficulty.HARD;
             default:
-                System.out.println("\nMedium was chosen for you.\n");
+                System.out.println("Medium was chosen for you.\n");
                 return Difficulty.MEDIUM;
+        }
+    }
+
+    public void consequence(boolean correctAnswer) {
+        if (correctAnswer) {
+            System.out.println("You the best!\n");
+        } else {
+            System.out.println("You the worst!\n");
         }
     }
 
@@ -54,14 +65,5 @@ public class ConsoleUI implements UI {
                 + "temporary feature.";
         System.out.println(welcomeMessage + "\n");
         System.out.println(disclaimer + "\n");
-    }
-
-    @Override
-    public void consequence(boolean correctAnswer) {
-        if (correctAnswer) {
-            System.out.println("You the best!\n");
-        } else {
-            System.out.println("You the worst!\n");
-        }
     }
 }
