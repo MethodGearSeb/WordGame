@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 8,
-             Errors: 0,
+      <title>File: 10,
+             Errors: 7,
              Warnings: 0,
              Infos: 0
       </title>
@@ -102,6 +102,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.mgseb.wordgame.game.GameInfo.java">com/mgseb/wordgame/game/GameInfo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.mgseb.wordgame.domain.Question.java">com/mgseb/wordgame/domain/Question.java</a>
                 </td>
                 <td>
@@ -154,6 +168,20 @@ under the License.
                 </td>
                 <td>
                   0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.mgseb.wordgame.ui.SwingUI.java">com/mgseb/wordgame/ui/SwingUI.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
                 </td>
               </tr>
                       </tbody>
