@@ -170,7 +170,8 @@ public class SwingUI extends JFrame implements UI, ActionListener,
 
     @Override
     public void keyTyped(KeyEvent e) {
-        int code = e.getKeyCode();System.out.println(code);
+        int code = e.getKeyCode();
+        System.out.println(code);
         Container p = getContentPane();
 
         switch (code) {
@@ -189,7 +190,8 @@ public class SwingUI extends JFrame implements UI, ActionListener,
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int code = e.getKeyCode();System.out.println(code);
+        int code = e.getKeyCode();
+        System.out.println(code);
         Container p = getContentPane();
 
         switch (code) {
@@ -208,7 +210,8 @@ public class SwingUI extends JFrame implements UI, ActionListener,
 
     @Override
     public void keyReleased(KeyEvent e) {
-        int code = e.getKeyCode();System.out.println(code);
+        int code = e.getKeyCode();
+        System.out.println(code);
         Container p = getContentPane();
 
         switch (code) {
