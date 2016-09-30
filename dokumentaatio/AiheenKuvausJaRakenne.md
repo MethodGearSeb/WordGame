@@ -12,5 +12,5 @@
 
 ##Luokkakaavio
 
-![Luokkakaavio](http://yuml.me/49c58cb0)
-[Muokkaa](http://yuml.me/edit/49c58cb0)
+![Luokkakaavio](https://github.com/MethodGearSeb/WordGame/blob/master/dokumentaatio/luokkakaavio.png)
+[Muokkaa](http://yuml.me/edit/83aa6f32)
