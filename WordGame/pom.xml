@@ -36,15 +36,11 @@
                 <configuration>
                     <targetClasses>
                         <param>com.mgseb.wordgame.domain.*</param>
-                        <param>com.mgseb.wordgame.game.GameInfo</param>
-                        <param>com.mgseb.wordgame.game.QuestionReader</param>
-                        <param>com.mgseb.wordgame.game.QuestionSeries</param>
+                        <param>com.mgseb.wordgame.game.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.mgseb.wordgame.domain.*</param>
-                        <param>com.mgseb.wordgame.game.GameInfo</param>
-                        <param>com.mgseb.wordgame.game.QuestionReader</param>
-                        <param>com.mgseb.wordgame.game.QuestionSeries</param>
+                        <param>com.mgseb.wordgame.game.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
