@@ -15,22 +15,27 @@ public class Question {
 
     /**
      * Sets up class variables. Partial answer is initially fully visible.
+     *
      * @param question Question string read from file by QuestionReader
      * @param answer Answer string read from file by QuestionReader
      */
     public Question(String question, String answer) {
         this.question = question;
         this.answer = answer;
-        this.partialAnswer = answer;
     }
 
     public String getQuestion() {
         return question;
     }
 
+    public String getAnswer() {
+        return answer;
+    }
+
     /**
      * Returns partially conceals, then returns partial answer. Extent of
      * concealment depends on chosen game difficulty.
+     *
      * @param difficulty
      * @return partially concealed answer to serve as a hint to the player
      */
@@ -41,6 +46,7 @@ public class Question {
 
     /**
      * Checks whether user input matches answer. Case insensitive.
+     *
      * @param guess user input
      * @return the correctness of the player's guess
      */
@@ -51,23 +57,24 @@ public class Question {
     /**
      * Partially conceals partial answer. Number of hidden letters depends on
      * chosen difficulty.
-     * @param difficulty 
+     *
+     * @param difficulty
      */
     public void hideLetters(Difficulty difficulty) {
-        partialAnswer = answer;
         int hiddenLetters = numberOfHiddenLetters(difficulty);
         Random random = new Random();
         String temp = "";
         boolean showLetter;
 
-        for (int i = 0; i < partialAnswer.length(); i++) {
+        for (int i = 0; i < answer.length(); i++) {
             showLetter = random.nextBoolean();
 
             if ((showLetter || hiddenLetters == 0)
-                    && hiddenLetters < partialAnswer.length() - i) {
-                temp += partialAnswer.charAt(i);
+                    && hiddenLetters < answer.length() - i) {
+                temp += answer.charAt(i);
             } else {
-                temp += "_";
+                temp += "  ";
+                temp += (char) 800;
                 hiddenLetters--;
             }
         }

@@ -17,8 +17,8 @@ public class QuestionTest {
     public QuestionTest() {
         this.hint1 = "The favorite fruit of a monkey.";
         this.hint2 = "Synonymous with \"tyrannical.\"";
-        this.answer1 = "Banana";
-        this.answer2 = "Despotic";
+        this.answer1 = "banana";
+        this.answer2 = "despotic";
     }
 
     @Before
@@ -49,43 +49,54 @@ public class QuestionTest {
     }
 
     @Test
-    public void hideVisibleAnswerEasy() {
+    public void hideLettersEasy() {
         String visibleAnswer = question2.getPartialAnswer(Difficulty.EASY);
-        int expected = visibleAnswer.length() / 2;
-        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
+        int length = question2.getAnswer().length();
+        int expected = length / 2;
+        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer, length));
     }
 
     @Test
     public void hideLettersMedium() {
-        question2.hideLetters(Difficulty.MEDIUM);
         String visibleAnswer = question2.getPartialAnswer(Difficulty.MEDIUM);
-        int expected = visibleAnswer.length() / 4 * 3;
-        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
+        int length = question2.getAnswer().length();
+        int expected = length / 4 * 3;
+        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer, length));
     }
 
     @Test
     public void hideLettersHard() {
-        question2.hideLetters(Difficulty.HARD);
         String visibleAnswer = question2.getPartialAnswer(Difficulty.HARD);
-        int expected = visibleAnswer.length();
-        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
+        int length = question2.getAnswer().length();
+        int expected = length;
+        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer, length));
     }
-    
+
     @Test
     public void hideLettersRepeatedUseHasNoEffect() {
         question2.getPartialAnswer(Difficulty.EASY);
         String visibleAnswer = question2.getPartialAnswer(Difficulty.EASY);
-        int expected = visibleAnswer.length() / 2;
-        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer));
+        int length = question2.getAnswer().length();
+        int expected = length / 2;
+        assertTrue(correctNumberOfUnderscores(expected, visibleAnswer, length));
     }
 
-    private boolean correctNumberOfUnderscores(int expected, String visibleAnswer) {
-        int underscores = 0;
+    private boolean correctNumberOfUnderscores(int expected,
+            String visibleAnswer, int length) {
+        int normalLetters = 0;
+
         for (char c : visibleAnswer.toCharArray()) {
-            if (c == '_') {
-                underscores++;
+            int charCode = (int) c;
+            
+            System.out.println("charCode: "+charCode);
+
+            if (charCode >= 97 && charCode <= 122) {
+                normalLetters++;
             }
         }
+
+        int underscores = length - normalLetters;
+
         return underscores == expected;
     }
 }
