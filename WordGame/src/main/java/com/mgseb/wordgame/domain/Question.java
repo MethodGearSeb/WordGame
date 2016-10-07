@@ -36,8 +36,8 @@ public class Question {
      * Returns partially conceals, then returns partial answer. Extent of
      * concealment depends on chosen game difficulty.
      *
-     * @param difficulty
-     * @return partially concealed answer to serve as a hint to the player
+     * @param difficulty the difficulty setting chosen by the user
+     * @return partially concealed answer to serve as a hint to the user
      */
     public String getPartialAnswer(Difficulty difficulty) {
         hideLetters(difficulty);
@@ -48,7 +48,7 @@ public class Question {
      * Checks whether user input matches answer. Case insensitive.
      *
      * @param guess user input
-     * @return the correctness of the player's guess
+     * @return the correctness of the user's guess
      */
     public boolean isCorrect(String guess) {
         return guess.toLowerCase().equals(answer.toLowerCase());
@@ -58,7 +58,7 @@ public class Question {
      * Partially conceals partial answer. Number of hidden letters depends on
      * chosen difficulty.
      *
-     * @param difficulty
+     * @param difficulty the difficulty setting chosen by the user
      */
     public void hideLetters(Difficulty difficulty) {
         int hiddenLetters = numberOfHiddenLetters(difficulty);

@@ -5,6 +5,11 @@ import com.mgseb.wordgame.ui.*;
 
 public class Main {
 
+    /**
+     * Launches the application.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         UI ui = new SwingUI();
         App app = new App(ui);

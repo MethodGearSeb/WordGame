@@ -5,6 +5,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Generates questions by scanning a text file. Feeds questions to Question
+ * Series.
+ *
+ * @author fuksi
+ */
 public class QuestionReader {
 
     private final String fileAddress;
@@ -12,12 +18,18 @@ public class QuestionReader {
     /**
      * If file address given is null, use default file address.
      *
-     * @param fileAddress
+     * @param fileAddress redundant in the current state of the application
      */
     public QuestionReader(String fileAddress) {
         this.fileAddress = replaceIfInvalid(fileAddress);
     }
 
+    /**
+     * Converts data scanned from a text file into instances of class question.
+     * Feeds generated questions to an instance of Question Series.
+     *
+     * @param series collects generated questions to be used in the game
+     */
     public void readQuestions(QuestionSeries series) {
         Scanner scanner = openScanner();
 

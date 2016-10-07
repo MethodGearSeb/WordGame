@@ -2,6 +2,12 @@ package com.mgseb.wordgame.domain;
 
 import java.awt.Color;
 
+/**
+ * Keeps track of game progress and score. Manages messages that are displayed
+ * to the user.
+ *
+ * @author fuksi
+ */
 public class GameInfo {
 
     private String message;
@@ -10,6 +16,9 @@ public class GameInfo {
     private int right;
     private int wrong;
 
+    /**
+     * Initialises most class attributes.
+     */
     public GameInfo() {
         message = "Get started!";
         questionNumber = 1;
@@ -17,6 +26,12 @@ public class GameInfo {
         wrong = 0;
     }
 
+    /**
+     * Updates game progress information. Called anytime a question is answered.
+     * Updates question number, score, message, message colour.
+     *
+     * @param correct tells whether the latest guess made by the user was right
+     */
     public void nextQuestion(boolean correct) {
         questionNumber++;
 
@@ -50,7 +65,10 @@ public class GameInfo {
     public int getWrong() {
         return wrong;
     }
-    
+
+    /**
+     * Reverts the attributes related to the message back to neutral.
+     */
     public void defaultMessage() {
         message = "Guess the word.";
         messageColor = Color.BLACK;

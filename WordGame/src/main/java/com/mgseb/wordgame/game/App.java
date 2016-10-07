@@ -5,17 +5,31 @@ import com.mgseb.wordgame.ui.ConsoleUI;
 import com.mgseb.wordgame.ui.SwingUI;
 import com.mgseb.wordgame.ui.UI;
 
+/**
+ * Launches the UI. Tells Console UI what to do.
+ *
+ * @author fuksi
+ */
 public class App {
 
     private final QuestionSeries series;
     private final UI ui;
 
+    /**
+     * Initialises attributes.
+     *
+     * @param ui the UI passed on from Main
+     */
     public App(UI ui) {
         this.ui = ui;
         this.series = new QuestionSeries();
         setSeries();
     }
 
+    /**
+     * Discerns whether the UI is Swing or console based. Calls respective
+     * private function to properly run the UI.
+     */
     public void run() {
         Class uiClass = ui.getClass();
 
