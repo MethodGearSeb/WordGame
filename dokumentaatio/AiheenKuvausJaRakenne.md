@@ -13,4 +13,17 @@
 ##Luokkakaavio
 
 ![Luokkakaavio](https://github.com/MethodGearSeb/WordGame/blob/master/dokumentaatio/luokkakaavio.png)
+
 [Muokkaa](http://yuml.me/edit/83aa6f32)
+
+##Sekvenssikaaviot
+
+![Käynnistys](https://github.com/MethodGearSeb/WordGame/blob/master/dokumentaatio/kaynnistys.png)
+
+![Vaikeusasteen valinta](https://github.com/MethodGearSeb/WordGame/blob/master/dokumentaatio/vaikeusasteenValinta.png)
+
+![Vastaaminen](https://github.com/MethodGearSeb/WordGame/blob/master/dokumentaatio/vastaaminen.png)
+
+![Seuraava kysymys](https://github.com/MethodGearSeb/WordGame/blob/master/dokumentaatio/seuraavaKysymys.png)
+
+![Pelin päättyminen](https://github.com/MethodGearSeb/WordGame/blob/master/dokumentaatio/peliPaattyy.png)
