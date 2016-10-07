@@ -1,6 +1,9 @@
-package com.mgseb.wordgame.game;
+package com.mgseb.wordgame.app;
 
 import com.mgseb.wordgame.domain.Question;
+import com.mgseb.wordgame.game.Difficulty;
+import com.mgseb.wordgame.game.QuestionReader;
+import com.mgseb.wordgame.game.QuestionSeries;
 import com.mgseb.wordgame.ui.ConsoleUI;
 import com.mgseb.wordgame.ui.SwingUI;
 import com.mgseb.wordgame.ui.UI;

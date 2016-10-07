@@ -1,6 +1,6 @@
 package com.mgseb.wordgame;
 
-import com.mgseb.wordgame.game.App;
+import com.mgseb.wordgame.app.App;
 import com.mgseb.wordgame.ui.*;
 
 public class Main {
