@@ -2,7 +2,7 @@ package com.mgseb.wordgame.ui;
 
 import com.mgseb.wordgame.domain.Question;
 import com.mgseb.wordgame.game.Difficulty;
-import com.mgseb.wordgame.game.GameInfo;
+import com.mgseb.wordgame.domain.GameInfo;
 import com.mgseb.wordgame.game.QuestionReader;
 import com.mgseb.wordgame.game.QuestionSeries;
 import java.awt.*;

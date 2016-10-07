@@ -1,5 +1,6 @@
 package com.mgseb.wordgame.game;
 
+import com.mgseb.wordgame.domain.GameInfo;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

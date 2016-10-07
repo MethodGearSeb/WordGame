@@ -1,4 +1,4 @@
-package com.mgseb.wordgame.game;
+package com.mgseb.wordgame.domain;
 
 import java.awt.Color;
 
