@@ -8,22 +8,17 @@ import com.mgseb.wordgame.game.QuestionSeries;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.*;
 
-public class SwingUI extends JFrame implements UI, ActionListener, 
-        KeyListener {
+public class SwingUI extends JFrame implements UI, ActionListener {
 
     private QuestionSeries series;
     private Difficulty difficulty;
     private GameInfo info;
     private Question question;
-    private String view;
 
     private void difficultySelectionView() {
         Container p = getContentPane();
-        view = "difficulty";
         series = null;
         difficulty = null;
         info = null;
@@ -49,21 +44,20 @@ public class SwingUI extends JFrame implements UI, ActionListener,
         p.add(combox);
         p.add(button);
         pack();
-        p.addKeyListener(this);
+        this.getRootPane().setDefaultButton(button);
     }
 
     private void gameView() {
         Container p = getContentPane();
-        view = "game";
         question = series.next();
-        String round = "Question " + info.getQuestionNumber();
+        String round = "Question " + info.getQuestionNumber() + "/10";
         String right = "Right: " + info.getRight();
         String wrong = "Wrong: " + info.getWrong();
         JTextArea questionText = new JTextArea(question.getQuestion());
         JTextArea partial = new JTextArea(question.getPartialAnswer(difficulty));
         JTextField guess = new JTextField();
         JPanel infoPanel = new JPanel();
-        JTextArea message = new JTextArea(info.getMessage());
+        JTextPane message = new JTextPane();
         JPanel buttonPanel = new JPanel();
         JButton answer = new JButton("Answer");
         JButton quit = new JButton("Quit");
@@ -74,6 +68,7 @@ public class SwingUI extends JFrame implements UI, ActionListener,
         p.removeAll();
         p.setLayout(layout);
         infoPanel.setLayout(infoLayout);
+        message.setText(info.getMessage());
         buttonPanel.setLayout(buttonLayout);
         infoPanel.add(new JTextArea(round));
         infoPanel.add(new JTextArea(right));
@@ -81,7 +76,6 @@ public class SwingUI extends JFrame implements UI, ActionListener,
         infoPanel.add(new JPanel());
         answer.setActionCommand("answer");
         answer.addActionListener(this);
-        answer.addKeyListener(this);
         quit.setActionCommand("quit");
         quit.addActionListener(this);
         buttonPanel.add(answer);
@@ -94,7 +88,32 @@ public class SwingUI extends JFrame implements UI, ActionListener,
         p.add(buttonPanel);
         pack();
         p.getComponent(4).requestFocus();
-        p.addKeyListener(this);
+        this.getRootPane().setDefaultButton(answer);
+    }
+
+    private void gameoverView() {
+        Container p = getContentPane();
+        String messageText = "You got " + info.getRight() + " out of 10 right";
+        JLabel message = new JLabel(messageText);
+        JButton newGame = new JButton("Start a new game");
+        JButton difficultyButton = new JButton("Change difficulty");
+        JPanel panel = new JPanel();
+        GridLayout layout = new GridLayout(2, 1);
+        GridLayout buttonLayout = new GridLayout(1, 2);
+        
+        p.removeAll();
+        p.setLayout(layout);
+        newGame.setActionCommand("start new");
+        newGame.addActionListener(this);
+        difficultyButton.setActionCommand("quit");
+        difficultyButton.addActionListener(this);
+        panel.setLayout(buttonLayout);
+        panel.add(newGame);
+        panel.add(difficultyButton);
+        p.add(message);
+        p.add(panel);
+        pack();
+        this.getRootPane().setDefaultButton(newGame);
     }
 
     private void setSeries() {
@@ -122,6 +141,10 @@ public class SwingUI extends JFrame implements UI, ActionListener,
                 break;
         }
 
+        startGame();
+    }
+    
+    private void startGame() {
         setSeries();
 
         if (series.hasNext()) {
@@ -132,15 +155,41 @@ public class SwingUI extends JFrame implements UI, ActionListener,
     }
 
     private void answer(Container p) {
-        if (series.hasNext()) {
-            JTextField guess = (JTextField) p.getComponent(4);
-            boolean correct = question.isCorrect(guess.getText());
+        JTextField guess = (JTextField) p.getComponent(4);
+        boolean correct = question.isCorrect(guess.getText());
 
-            info.nextQuestion(correct);
+        info.nextQuestion(correct);
+
+        JPanel buttonPanel = (JPanel) p.getComponent(5);
+        JButton next = (JButton) buttonPanel.getComponent(0);
+
+        next.setText("Next");
+        next.setActionCommand("next");
+        updateGameView(p);
+    }
+
+    private void nextQuestion() {
+        if (series.hasNext() && info.getQuestionNumber() <= 10) {
             gameView();
         } else {
-            difficultySelectionView();
+            gameoverView();
         }
+    }
+
+    private void updateGameView(Container p) {
+        JPanel infoPanel = (JPanel) p.getComponent(1);
+        JTextArea partial = (JTextArea) p.getComponent(2);
+        JTextPane message = (JTextPane) p.getComponent(3);
+        JTextArea rightArea = (JTextArea) infoPanel.getComponent(1);
+        JTextArea wrongArea = (JTextArea) infoPanel.getComponent(2);
+        String right = "Right: " + info.getRight();
+        String wrong = "Wrong: " + info.getWrong();
+
+        rightArea.setText(right);
+        wrongArea.setText(wrong);
+        partial.setText(question.getAnswer());
+        message.setForeground(info.getMessageColor());
+        message.setText(info.getMessage());
     }
 
     @Override
@@ -159,71 +208,18 @@ public class SwingUI extends JFrame implements UI, ActionListener,
             case "start":
                 selectDifficulty(p);
                 break;
+            case "start new":
+                startGame();
+                break;
             case "quit":
                 difficultySelectionView();
                 break;
             case "answer":
                 answer(p);
                 break;
-        }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        int code = e.getKeyCode();
-        System.out.println(code);
-        Container p = getContentPane();
-
-        switch (code) {
-            case 13:
-                switch (view) {
-                    case "difficulty":
-                        selectDifficulty(p);
-                        break;
-                    case "game":
-                        answer(p);
-                        break;
-                }
-                break;
-        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int code = e.getKeyCode();
-        System.out.println(code);
-        Container p = getContentPane();
-
-        switch (code) {
-            case 13:
-                switch (view) {
-                    case "difficulty":
-                        selectDifficulty(p);
-                        break;
-                    case "game":
-                        answer(p);
-                        break;
-                }
-                break;
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int code = e.getKeyCode();
-        System.out.println(code);
-        Container p = getContentPane();
-
-        switch (code) {
-            case 13:
-                switch (view) {
-                    case "difficulty":
-                        selectDifficulty(p);
-                        break;
-                    case "game":
-                        answer(p);
-                        break;
-                }
+            case "next":
+                info.defaultMessage();
+                nextQuestion();
                 break;
         }
     }
