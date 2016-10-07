@@ -8,7 +8,7 @@ public class Main {
     /**
      * Launches the application.
      *
-     * @param args
+     * @param args redundant
      */
     public static void main(String[] args) {
         UI ui = new SwingUI();
