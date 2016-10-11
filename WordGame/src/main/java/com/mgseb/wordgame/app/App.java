@@ -50,7 +50,7 @@ public class App {
         Difficulty difficulty = cui.selectDifficulty();
         GameInfo info = new GameInfo();
         QuestionSeries series = new QuestionSeries();
-        
+
         setSeries(series);
         cui.setInfo(info);
 
@@ -60,7 +60,7 @@ public class App {
 
             cui.consequence(question.isCorrect(guess));
         }
-        
+
         cui.score();
         cui.gameover();
     }

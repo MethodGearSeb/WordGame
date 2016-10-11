@@ -40,7 +40,7 @@ public class ConsoleUI implements UI {
         if (info == null) {
             System.out.println("ERROR: Info has not been set");
         }
-        
+
         System.out.println("Question " + info.getQuestionNumber() + "/10");
         System.out.println("right: " + info.getRight());
         System.out.println("wrong: " + info.getWrong() + "\n");
@@ -95,17 +95,23 @@ public class ConsoleUI implements UI {
         System.out.println(info.getMessage());
         System.out.println();
     }
-    
+
+    /**
+     * Displays user's overall score once game is over.
+     */
     public void score() {
-        System.out.println("You got "+info.getRight()+" out of 10 right");
+        System.out.println("You got " + info.getRight() + " out of 10 right");
         System.out.println();
     }
-    
+
+    /**
+     * Determines whether to start a new game. Does so through user input.
+     */
     public void gameover() {
         System.out.print("New game? (y/n): ");
-        
+
         String newGame = scanner.nextLine().toLowerCase();
-        
+
         switch (newGame) {
             case "y":
                 System.out.println();
