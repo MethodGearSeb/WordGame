@@ -10,3 +10,4 @@ Päivä | Tunnit | Kuvaus
 29.09.2016 | 4h | Swing-käyttöliittymän muotoilu
 06.10.2016 | 1h | JavaDocin kokeilua
 07.10.2016 | 6h | Swing-käyttöliittymän muokkailua, dokumentaatio
+11.10.2016 | 2h | Kysymyksien ja konsolikäyttöliittymän edistys
