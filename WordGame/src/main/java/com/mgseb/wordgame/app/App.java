@@ -1,5 +1,6 @@
 package com.mgseb.wordgame.app;
 
+import com.mgseb.wordgame.domain.GameInfo;
 import com.mgseb.wordgame.domain.Question;
 import com.mgseb.wordgame.game.Difficulty;
 import com.mgseb.wordgame.game.QuestionReader;
@@ -15,7 +16,6 @@ import com.mgseb.wordgame.ui.UI;
  */
 public class App {
 
-    private final QuestionSeries series;
     private final UI ui;
 
     /**
@@ -25,8 +25,6 @@ public class App {
      */
     public App(UI ui) {
         this.ui = ui;
-        this.series = new QuestionSeries();
-        setSeries();
     }
 
     /**
@@ -50,20 +48,28 @@ public class App {
 
         ConsoleUI cui = (ConsoleUI) ui;
         Difficulty difficulty = cui.selectDifficulty();
+        GameInfo info = new GameInfo();
+        QuestionSeries series = new QuestionSeries();
+        
+        setSeries(series);
+        cui.setInfo(info);
 
-        while (series.hasNext()) {
+        while (info.getQuestionNumber() <= 10 && series.hasNext()) {
             Question question = series.next();
             String guess = cui.askQuestion(question, difficulty);
 
             cui.consequence(question.isCorrect(guess));
         }
+        
+        cui.score();
+        cui.gameover();
     }
 
     private void runSwing() {
         ui.run();
     }
 
-    private void setSeries() {
+    private void setSeries(QuestionSeries series) {
         QuestionReader reader = new QuestionReader(null);
         reader.readQuestions(series);
     }

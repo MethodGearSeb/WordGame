@@ -1,5 +1,7 @@
 package com.mgseb.wordgame.ui;
 
+import com.mgseb.wordgame.app.App;
+import com.mgseb.wordgame.domain.GameInfo;
 import com.mgseb.wordgame.domain.Question;
 import com.mgseb.wordgame.game.Difficulty;
 import java.util.Scanner;
@@ -13,12 +15,17 @@ import java.util.Scanner;
 public class ConsoleUI implements UI {
 
     private final Scanner scanner;
+    private GameInfo info;
 
     /**
      * Initialises scanner.
      */
     public ConsoleUI() {
         this.scanner = new Scanner(System.in);
+    }
+
+    public void setInfo(GameInfo info) {
+        this.info = info;
     }
 
     /**
@@ -30,6 +37,13 @@ public class ConsoleUI implements UI {
      * @return user's guess
      */
     public String askQuestion(Question question, Difficulty difficulty) {
+        if (info == null) {
+            System.out.println("ERROR: Info has not been set");
+        }
+        
+        System.out.println("Question " + info.getQuestionNumber() + "/10");
+        System.out.println("right: " + info.getRight());
+        System.out.println("wrong: " + info.getWrong() + "\n");
         System.out.println(question.getQuestion());
         System.out.println(question.getPartialAnswer(difficulty));
         System.out.print("\nYour guess: ");
@@ -76,10 +90,32 @@ public class ConsoleUI implements UI {
      * @param correctAnswer the correctness of the guess
      */
     public void consequence(boolean correctAnswer) {
-        if (correctAnswer) {
-            System.out.println("You the best!\n");
-        } else {
-            System.out.println("You the worst!\n");
+        info.nextQuestion(correctAnswer);
+        System.out.println();
+        System.out.println(info.getMessage());
+        System.out.println();
+    }
+    
+    public void score() {
+        System.out.println("You got "+info.getRight()+" out of 10 right");
+        System.out.println();
+    }
+    
+    public void gameover() {
+        System.out.print("New game? (y/n): ");
+        
+        String newGame = scanner.nextLine().toLowerCase();
+        
+        switch (newGame) {
+            case "y":
+                System.out.println();
+                new App(new ConsoleUI()).run();
+                break;
+            case "n":
+                break;
+            default:
+                gameover();
+                break;
         }
     }
 
@@ -87,10 +123,6 @@ public class ConsoleUI implements UI {
     public void run() {
         String welcomeMessage = "Welcome to Word Game! Guess the word based"
                 + " on the question and partially visible answer.";
-        String disclaimer = "NOTE: For now the game continues until ALL the "
-                + "questions in the reserve are answered.\nThis is a "
-                + "temporary feature.";
         System.out.println(welcomeMessage + "\n");
-        System.out.println(disclaimer + "\n");
     }
 }
