@@ -1,16 +1,12 @@
 @
-k1
+To enlarge (verb).
 #
-v1
+magnify
 @
-k2
+To make things worse (verb).
 #
-v2
+exacerbate
 @
-k3
+To drool (verb).
 #
-v3
-@
-k4
-#
-v4
+salivate
