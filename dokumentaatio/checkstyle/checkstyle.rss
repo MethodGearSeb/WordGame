@@ -46,20 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.mgseb.wordgame.game.App.java">com/mgseb/wordgame/game/App.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.mgseb.wordgame.game.QuestionReader.java">com/mgseb/wordgame/game/QuestionReader.java</a>
                 </td>
                 <td>
@@ -145,6 +131,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.mgseb.wordgame.domain.GameInfo.java">com/mgseb/wordgame/domain/GameInfo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.mgseb.wordgame.app.App.java">com/mgseb/wordgame/app/App.java</a>
                 </td>
                 <td>
                   0
