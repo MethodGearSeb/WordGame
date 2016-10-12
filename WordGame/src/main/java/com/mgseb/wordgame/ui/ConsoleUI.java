@@ -87,13 +87,13 @@ public class ConsoleUI implements UI {
     /**
      * Tells user whether or not the guess was the right answer.
      *
+     * @param answer correct answer in String form for printing
      * @param correctAnswer the correctness of the guess
      */
-    public void consequence(boolean correctAnswer) {
+    public void consequence(String answer, boolean correctAnswer) {
         info.nextQuestion(correctAnswer);
-        System.out.println();
-        System.out.println(info.getMessage());
-        System.out.println();
+        System.out.println("Correct answer: " + answer
+                + "\n\n" + info.getMessage() + "\n");
     }
 
     /**

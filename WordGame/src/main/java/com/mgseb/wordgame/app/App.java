@@ -58,7 +58,7 @@ public class App {
             Question question = series.next();
             String guess = cui.askQuestion(question, difficulty);
 
-            cui.consequence(question.isCorrect(guess));
+            cui.consequence(question.getAnswer(), question.isCorrect(guess));
         }
 
         cui.score();
