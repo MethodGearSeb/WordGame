@@ -75,6 +75,7 @@ public class Question {
             } else {
                 temp += "  ";
                 temp += (char) 800;
+                temp += " ";
                 hiddenLetters--;
             }
         }

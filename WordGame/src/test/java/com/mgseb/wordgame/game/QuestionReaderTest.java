@@ -9,7 +9,7 @@ public class QuestionReaderTest {
     String testfile;
 
     public QuestionReaderTest() {
-        testfile = "wordgame/test.txt";
+        testfile = "test.txt";
     }
 
     @Before
