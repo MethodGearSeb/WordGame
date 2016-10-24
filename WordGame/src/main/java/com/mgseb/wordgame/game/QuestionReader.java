@@ -3,6 +3,7 @@ package com.mgseb.wordgame.game;
 import com.mgseb.wordgame.domain.Question;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 /**
@@ -66,18 +67,11 @@ public class QuestionReader {
         if (fileAddress != null && !fileAddress.isEmpty()) {
             return fileAddress;
         }
-        return "wordgame/english.txt";
+        return "english.txt";
     }
 
     private Scanner openScanner() {
-        ClassLoader loader = getClass().getClassLoader();
-        File file = new File(loader.getResource(fileAddress).getFile());
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            System.out.println("ERROR: File could not be found");
-        }
-        return scanner;
+        InputStream file = getClass().getResourceAsStream(fileAddress); 
+        return new Scanner(file);
     }
 }
