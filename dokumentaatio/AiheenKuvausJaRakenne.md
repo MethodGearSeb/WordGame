@@ -14,7 +14,7 @@
 
 ![Luokkakaavio](https://github.com/MethodGearSeb/WordGame/blob/master/dokumentaatio/luokkakaavio.png)
 
-[Muokkaa](http://yuml.me/edit/83aa6f32)
+[Muokkaa](http://yuml.me/edit/17d6f1a0)
 
 ##Sekvenssikaaviot
 
